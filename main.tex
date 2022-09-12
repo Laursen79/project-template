@@ -1,0 +1,38 @@
+% The preamble contains command definitions, macros and the like; 
+% All the things that must be defined before \begin{document}.
+\input{preamble.tex}
+
+
+% Input the title and such for the title page
+\title{This is our project}
+\subtitle{Something about something}
+\projectgroup{cs-22-sw-5-15}
+\author{Simon \and Bimon}
+\date{December 2004}
+
+
+\begin{document}
+% Inserts the front page. You could change this to a custom front page.
+\frontpage
+
+% Inserts the title page
+\maketitle
+
+\tableofcontents
+
+\include{00-preface/00-preface-main-tex}
+\include{01-Introduction/00-introduction-main.tex}
+\include{02-analysis/00-analysis-main}
+\include{03-problem-statement/00-problem-statement-main.tex}
+\include{04-design/00-design-main}
+\include{05-implementation/00-implementation-main}
+\include{06-test-and-evaluation/00-test-and-evaluation-main}
+\include{07-discussion/00-discussion-main}
+\include{08-conclusion/00-conclusion-main}
+\include{09-future-work/00-future-work-main}
+\bibliography{bibliography/bibliography}
+\appendix
+\include{10-appendix/00-appendix-main}
+
+
+\end{document}
