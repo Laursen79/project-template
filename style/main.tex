@@ -1,1 +1,16 @@
 \input{style/colors.tex}
+
+% === Title styles ===
+
+\titleformat{\chapter}
+  {\aaufontblack\Huge\bfseries\color{aaublue1}}{\thechapter.\;}{6pt}{\MakeUppercase{#1}}
+
+\titleformat{\section}
+  {\aaufontblack\LARGE\bfseries\color{aaublue1}}{\thesection\;}{6pt}{\MakeUppercase{#1}}
+  
+\titleformat{\subsection}
+  {\aaufontbold\large\bfseries\color{aaublue1}}{\thesection\;}{6pt}{\MakeUppercase{#1}}
+ 
+\titleformat{\subsubsection}
+  {\aaufontbold\normalsize\bfseries\color{aaublue1}}{\thesection\;}{6pt}{\MakeUppercase{#1}}
+
