@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{proj-report}[2022/05/21 Project report]
 
-% Loads the base class (book is used for this class)
+% Loads the base class (report is used for this class)
 \LoadClass[a4paper]{report}
 
 % Load required packages
@@ -73,16 +73,28 @@ ItalicFont= *-Italic]
 
 \def\subtitle#1{\newtoks\subtitle%
 \subtitle={#1}}
+\def\subject#1{\newtoks\subject%
+\subject={#1}}
 \def\intitute#1{\newtoks\institute%
 \institute={#1}}
 \def\projectgroup#1{\newtoks\projectgroup%
 \projectgroup={#1}}
 \def\participants#1{\newtoks\participants%
-\participants={#1}}
+\participants={#1}%
+\newtoks\prettyparticipants%
+\prettyparticipants={%
+    \makeatletter
+    \@for\participant:=#1\do{\participant,\\}
+    \makeatother
+    }}
 \def\department#1{\newtoks\department%
 \department={#1}}
 \def\supervisor#1{\newtoks\supervisor%
 \supervisor={#1}}
+\def\dateofcompletion#1{\newtoks\dateofcompletion%
+\dateofcompletion={#1}}
+\def\keywords#1{\newtoks\keywords%
+\keywords={#1}}
 
  
 %% === TABLE OF CONTENTS === %%
@@ -170,6 +182,7 @@ ItalicFont= *-Italic]
 \end{titlepage}
 \clearpage}
 
+
 % === TITLEPAGE ===
 
 \def\tpagestyle#1{{\color{aaublue1}\aaufontbold\large#1}}
@@ -182,13 +195,18 @@ ItalicFont= *-Italic]
 \begin{tabular}{@{}ll@{}}
   \parbox[t]{0.5\textwidth}{\raggedright\sf\small
     \tpagestyle{Title:}\\ \thetitle\bigskip\par
-    \tpagestyle{Theme:}\\ Hej\bigskip\par
+    \tpagestyle{Theme:}\\ \the\subject\bigskip\par
     \tpagestyle{Project Period:}\\ \thedate\bigskip\par
     \tpagestyle{Project Group:}\\ \the\projectgroup\bigskip\par
-    \tpagestyle{Participant(s):}\\ \the\participants \bigskip\par
-    \tpagestyle{Supervisor(s):}\\ \the\supervisor\bigskip\par
-    \tpagestyle{Copies:}\\ How many copies\bigskip\par
-    \tpagestyle{Page Numbers:}\\ \pageref{LastPage}\bigskip\par
+    \tpagestyle{Participants:}\\
+    \the\prettyparticipants
+    %
+     \bigskip\par
+    \tpagestyle{Supervisors:}\\ \the\supervisor\bigskip\par
+    \tpagestyle{Keywords:}\\\parbox[t]{0.5\textwidth}{%
+        \the\keywords
+    }\bigskip\par
+    \tpagestyle{Page Count:}\\ \pageref{LastPage}\bigskip\par
     \tpagestyle{Date of Completion:}\\ The date
     \bigskip\\
     \textbf{Electronics and IT}\\
@@ -196,7 +214,7 @@ ItalicFont= *-Italic]
     \href{http://www.aau.dk}{http://www.aau.dk}} &
   \parbox[t]{0.5\textwidth}{%
   \tpagestyle{Abstract:}\bigskip\par
-      Hej
+        Abstract
   }
 \end{tabular}
 \vfill
@@ -214,14 +232,10 @@ ItalicFont= *-Italic]
   
   % -- Table of contents ------------------------------
 
-\titlecontents{chapter}
-[0em] % ie, 1.5em (chapter) + 2.3em
-{}
-{\aaufontbold\contentslabel{2.3em}}
-{\hspace*{-2.3em}}
-{\titlerule*[1pc]{}\contentspage}
-\dottedcontents{section}[1em]{\color{aaublue1}\aaufont}{2.9em}{1pc}
-\dottedcontents{subsection}[2em]{\color{aaublue1}\aaufont}{3.3em}{1pc}
+
+\dottedcontents{chapter}[0em]{\color{aaublue1}\aaufontbold}{3.3em}{1pc}
+\dottedcontents{section}[0em]{\color{aaublue1}\aaufont}{3.3em}{1pc}
+\dottedcontents{subsection}[1em]{\color{aaublue1}\aaufont}{3.8em}{1pc}
 
 % center the toc heading
 \renewcommand{\contentsname}{\centering\aaufontblack\color{aaublue1} Contents}

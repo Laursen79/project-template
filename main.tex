@@ -6,29 +6,45 @@
 % Input the title and such for the title page
 \title{This is our project}
 \subtitle{Something about something}
-\projectgroup{cs-22-sw-5-15}
-\author{Simon \and Bimon \and Limon}
+\subject{Web Applications with Solid}
+\projectgroup{CS-22-SW-7-07}
 \date{Fall 2022}
-\participants{\parbox[t]{0.5\textwidth}{%
-Simon Bimon Limon,\\
-Bimon Limon Simon,\\
-Limon Simon Bimon
-}}
-\supervisor{Superman}
+\participants{%
+Person 1,
+Person 2,
+Person 3,
+Person 4,
+Person 5,
+Person 6} % <- Make sure there is no space between name and }
+\supervisor{Supervisor Name}
 \department{Department of Computer Science}
+\keywords{Semester Project, Computer Science}
 
+%%% Hyperref %%%
+\hypersetup{%
+	plainpages=false,%
+	pdfauthor={\the\participants},%
+	pdftitle={\thetitle},%
+	pdfsubject={\the\subject},%
+    pdfcreator={\the\projectgroup}%
+	bookmarksnumbered=true,%
+	colorlinks=true,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,% you should probably change this to black before printing
+	urlcolor=black,%
+	pdfstartview=FitH%
+}
 
 \begin{document}
-% Inserts the front page. You could change this to a custom front page.
 \frontpage
 \indexpage
-
 \tableofcontents
 
-\include{00-preface/00-preface-main-tex}
-\include{01-Introduction/00-introduction-main.tex}
+\include{00-preface/00-preface-main}
+\include{01-introduction/00-introduction-main}
 \include{02-analysis/00-analysis-main}
-\include{03-problem-statement/00-problem-statement-main.tex}
+\include{03-problem-statement/00-problem-statement-main}
 \include{04-design/00-design-main}
 \include{05-implementation/00-implementation-main}
 \include{06-test-and-evaluation/00-test-and-evaluation-main}
